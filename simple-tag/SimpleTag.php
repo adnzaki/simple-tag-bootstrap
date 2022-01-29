@@ -76,7 +76,7 @@ class SimpleTag
      * 
      * @return SimpleTag
      */
-    public function content(string $inner, $outer = 'p', array $style = [])
+    public function content(string $inner, $outer = 'div', array $style = [])
     {   
         $result = '';
         if(is_array($outer))
