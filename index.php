@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+    <div class="container">
     <?php
     require_once 'wrapper.php';
     require_once 'components/accordion/accordion-sample-01.php';
 
     ?>
+    </div>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

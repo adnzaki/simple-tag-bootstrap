@@ -10,9 +10,10 @@ if(! function_exists('accordion')) {
         $slots = '',
         string $accordionId = 'my-accordion'
     ) {
+        echo '<div class="accordion-item">';
         accordion_header($headerId, $bodyId, $btnLabel, $show);
-
         accordion_body($bodyId, $headerId, $accordionId, $content, $slots, $show);
+        close_tag();
     }
 }
 
@@ -32,7 +33,6 @@ if(! function_exists('accordion_header')) {
     ) {
         $show ? $btnState = '' : $btnState = ' collapsed';
         st()->elem([
-            'div' => ['class' => 'accordion-item'],
             'h2' => ['class' => 'accordion-header', 'id' => $headerId]
         ])->content($btnLabel, [
             'button' => [
@@ -40,7 +40,7 @@ if(! function_exists('accordion_header')) {
                 'class' => "accordion-button$btnState",
                 'data-bs-toggle' => 'collapse',
                 'data-bs-target' => "#$bodyId",
-                'aria-expanded' => 'true',
+                'aria-expanded' => $show ? 'true' : 'false',
                 'aria-controls' => $bodyId,
             ]
         ])->render(); 
