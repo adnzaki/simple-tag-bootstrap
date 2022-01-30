@@ -9,8 +9,17 @@ $content2 = 'This is the second item\'s accordion body.';
 // skip this step if you want to use default ID
 $accordion = accordion()->id('accordionSample');
 
+// use code below to make custom ID and always open accordion 
+// $accordion = accordion()->id('accordionSample')->setAlwaysOpen();
+
+// use code below to set accordion to be always open after it has opened
+// $accordion = accordion()->setAlwaysOpen();
+
 // generate accordion open tag
 $accordion->open();
+
+// use code below to set accordion flush
+// $accordion->open(true);
 
 // accordion item
 $accordion->item('headingOne', 'collapseOne', 'Button 1', $content1, true);
@@ -19,6 +28,9 @@ $accordion->item('headingThree', 'collapseThree', 'Button 3', 'Hello World!', fa
 
 // close accordion tag
 close_tag();
+
+// See https://getbootstrap.com/docs/5.1/components/accordion for more details
+// about Accordion component options
 
 // Above codes will produce the following HTML:
 // --------------------------------------------------------------------------------------------

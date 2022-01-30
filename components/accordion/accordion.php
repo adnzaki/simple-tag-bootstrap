@@ -11,9 +11,15 @@ class Accordion
 {
     private $accordionId = 'my-accordion';
 
-    public function open()
+    private $alwaysOpen = false;
+
+    public function open(bool $flush = false)
     {
-        echo '<div class="accordion" id="'. $this->accordionId .'">';
+    $flush
+        ? $accordionType = 'accordion accordion-flush'
+        : $accordionType = 'accordion';
+
+        echo '<div class="' . $accordionType . '" id="'. $this->accordionId .'">';
     }
 
     public function id(string $id)
@@ -23,13 +29,19 @@ class Accordion
         return $this;
     }
 
+    public function setAlwaysOpen()
+    {
+        $this->alwaysOpen = true;
+        return $this;
+    }
+
     public function item(
         string $headerId,
         string $bodyId,
         string $btnLabel,
         string $content = 'This is a text content',
         bool $show = false,
-        $slots = '',
+        $slots = ''
     ) {
         echo '<div class="accordion-item">';
     
@@ -55,7 +67,7 @@ class Accordion
                 'id' => $bodyId,
                 'class' => 'accordion-collapse collapse' . $showAccordion,
                 'aria-labelledby' => $headerId,
-                'data-bs-parent' => "#$this->accordionId"
+                'data-bs-parent' => $this->alwaysOpen ? '' : "#$this->accordionId"
             ],
             'div-2' => ['class' => 'accordion-body']
         ]);
