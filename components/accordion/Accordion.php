@@ -15,9 +15,9 @@ class Accordion
 
     public function open(bool $flush = false)
     {
-    $flush
-        ? $accordionType = 'accordion accordion-flush'
-        : $accordionType = 'accordion';
+        $flush
+            ? $accordionType = 'accordion accordion-flush'
+            : $accordionType = 'accordion';
 
         echo '<div class="' . $accordionType . '" id="'. $this->accordionId .'">';
     }
