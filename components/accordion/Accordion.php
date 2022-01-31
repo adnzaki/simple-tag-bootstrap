@@ -13,6 +13,8 @@ class Accordion
 
     private $alwaysOpen = false;
 
+    private $slots = 'none';
+
     public function open(bool $flush = false)
     {
         $flush
@@ -32,6 +34,14 @@ class Accordion
     public function setAlwaysOpen()
     {
         $this->alwaysOpen = true;
+
+        return $this;
+    }
+
+    public function slot($slots)
+    {
+        $this->slots = $slots;
+
         return $this;
     }
 
@@ -40,8 +50,7 @@ class Accordion
         string $bodyId,
         string $btnLabel,
         string $content = 'This is a text content',
-        bool $show = false,
-        $slots = ''
+        bool $show = false
     ) {
         echo '<div class="accordion-item">';
     
@@ -72,11 +81,7 @@ class Accordion
             'div-2' => ['class' => 'accordion-body']
         ]);
     
-        is_array($slots) || ! empty($slots)
-            ? $content = $root->content($content, $slots)
-            : $content = $root->content($content);
-    
-        $content->render();
+        $root->content($content, $this->slots)->render();
     
         // close end tag
         close_tag();

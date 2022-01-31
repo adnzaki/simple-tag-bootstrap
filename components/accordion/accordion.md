@@ -9,8 +9,11 @@ Generate custom accordion ID. This method is optional, since we have default ID.
 - `Accordion::setAlwaysOpen()`<br>
 Run this method will make accordion body always open after it has opened by user.
 
-- `Accordion::item(string $headerId, string $bodyId, string $btnLabel, string $content = 'This is a text content', bool $show = false, $slots = '')`
+- `Accordion::slot($slots)` <br>
+Pass slots to accordion. Note that `$slots` should be filled with HTML element that written in SimpleTag format, either it is in a string or array format.
+
+- `Accordion::item(string $headerId, string $bodyId, string $btnLabel, string $content = 'This is a text content', bool $show = false)`
 <br>
 Calling this function will generate accordion header and body automatically. <br>
-`$content` may contain string, either it is just a text or HTML. If you prefer put HTML string to `$content`, consider to write them in other file and grab its content to `$content` argument via native PHP function `file_get_contents()`. If `$slots` is an empty array or string, then default `<div>` element will be used. Note that `$slots` should be filled with HTML element that written in SimpleTag format, either it is in a string or array format.<br>
+`$content` may contain string, either it is just a text or HTML. If you prefer put HTML string to `$content`, consider to write them in other file and grab its content to `$content` argument via native PHP function `file_get_contents()`.
 <i>Note: For more readable code, you can use named argument on PHP 8.</i>
