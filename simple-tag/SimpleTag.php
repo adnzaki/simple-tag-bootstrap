@@ -8,7 +8,7 @@
  * @package     Library
  * @license     MIT
  * @copyright   Woles DevTeam (c) 2021
- * @version     0.2.0
+ * @version     0.2.2
  */
 
 class SimpleTag
@@ -79,45 +79,52 @@ class SimpleTag
     public function content(string $inner, $outer = 'div', array $style = [])
     {   
         $result = '';
-        if(is_array($outer))
-        {   
-            $tags = array_keys($outer);
-            $openTag = $this->createOpenTag($outer);
-            $closeTagWrapper = [];
-            foreach($tags as $tag)
-            {
-                $closeTagWrapper[] = "</$tag>";
-            }
-
-            $closeTag = implode('', array_reverse($closeTagWrapper));
-            $result = $openTag[0] . $inner . $closeTag;
-        }
-        else
+        if($outer !== 'none')
         {
-            if(strpos($outer, '>') === false)
-            {
-                $styleStr = $this->createStyle($outer, $style);
-                $result = '<'.$outer. ' ' .$styleStr.'>'. $inner .'</'.$outer.'>';
+            if(is_array($outer))
+            {   
+                $tags = array_keys($outer);
+                $openTag = $this->createOpenTag($outer);
+                $closeTagWrapper = [];
+                foreach($tags as $tag)
+                {
+                    $closeTagWrapper[] = "</$tag>";
+                }
+    
+                $closeTag = implode('', array_reverse($closeTagWrapper));
+                $result = $openTag[0] . $inner . $closeTag;
             }
             else
             {
-                $removeSpace = str_replace(' ', '', $outer);
-                $elems = explode('>', $removeSpace);
-                $outerOpen = '';
-                $outerClose = '';
-                $outerCloseWrapper = [];
-                foreach($elems as $val)
+                if(strpos($outer, '>') === false)
                 {
-                    $styleStr = $this->createStyle($val, $style);
-                    $outerOpen .= '<' . $val . $styleStr . '>';
-                    $outerCloseWrapper[] = '</' . $val . '>';
+                    $styleStr = $this->createStyle($outer, $style);
+                    $result = '<'.$outer. ' ' .$styleStr.'>'. $inner .'</'.$outer.'>';
                 }
-    
-                $outerClose = implode('', array_reverse($outerCloseWrapper));
-    
-                $result = $outerOpen . $inner . $outerClose . "\n";            
-            }
-        }        
+                else
+                {
+                    $removeSpace = str_replace(' ', '', $outer);
+                    $elems = explode('>', $removeSpace);
+                    $outerOpen = '';
+                    $outerClose = '';
+                    $outerCloseWrapper = [];
+                    foreach($elems as $val)
+                    {
+                        $styleStr = $this->createStyle($val, $style);
+                        $outerOpen .= '<' . $val . $styleStr . '>';
+                        $outerCloseWrapper[] = '</' . $val . '>';
+                    }
+        
+                    $outerClose = implode('', array_reverse($outerCloseWrapper));
+        
+                    $result = $outerOpen . $inner . $outerClose . "\n";            
+                }
+            }        
+        }
+        else
+        {
+            $result = $inner;
+        }
 
         $this->content .= $result;
 
@@ -139,7 +146,9 @@ class SimpleTag
             if($pos !== false) {
                 $val = substr($val, 0, $pos);
             }
-            $wrapper[] = "</$val>";
+            if($val !== 'input') {
+                $wrapper[] = "</$val>";
+            }
         }
 
         $this->closeTag = implode('', array_reverse($wrapper));
