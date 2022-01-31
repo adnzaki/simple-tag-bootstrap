@@ -24,3 +24,4 @@ require_once 'helper.php';
 
 // Wrap all components
 require_once 'components/accordion/Accordion.php';
+require_once 'components/button/Button.php';
