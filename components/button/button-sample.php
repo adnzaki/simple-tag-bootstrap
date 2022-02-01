@@ -2,7 +2,7 @@
 
 st()->elem('h4')->content('Standard buttons', 'none')->render();
 button()->id('my-button')->render('primary', 'Primary'); // with ID
-button()->render('secondary', 'Secondary');
+button()->addClass('text-nowrap')->render('secondary', 'Secondary'); // add .text-nowrap class
 button()->render('success', 'Success');
 button()->render('danger', 'Danger');
 button()->render('warning', 'Warning');
@@ -21,7 +21,7 @@ button()->tag('input')->render('primary', 'Reset', 'reset');
 
 echo '<br><br>';
 st()->elem('h4')->content('Outline buttons', 'none')->render();
-button()->outline()->render('primary', 'Primary');
+button()->outline()->slot('strong')->render('primary', 'Primary');
 button()->outline()->render('secondary', 'Secondary');
 button()->outline()->render('success', 'Success');
 button()->outline()->render('danger', 'Danger');

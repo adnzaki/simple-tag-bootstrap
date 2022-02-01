@@ -7,13 +7,14 @@
  * @since       Jan-2022
  * @package     Component
  */
-class Accordion
+class Accordion extends \BaseClass
 {
-    private $accordionId = 'my-accordion';
-
     private $alwaysOpen = false;
 
-    private $slots = 'none';
+    public function __construct()
+    {
+        $this->elemId = 'my-accordion';
+    }
 
     public function open(bool $flush = false)
     {
@@ -21,26 +22,12 @@ class Accordion
             ? $accordionType = 'accordion accordion-flush'
             : $accordionType = 'accordion';
 
-        echo '<div class="' . $accordionType . '" id="'. $this->accordionId .'">';
-    }
-
-    public function id(string $id)
-    {
-        $this->accordionId = $id;
-
-        return $this;
+        echo '<div class="' . $accordionType . '" id="'. $this->elemId .'">';
     }
 
     public function setAlwaysOpen()
     {
         $this->alwaysOpen = true;
-
-        return $this;
-    }
-
-    public function slot($slots)
-    {
-        $this->slots = $slots;
 
         return $this;
     }
@@ -61,7 +48,7 @@ class Accordion
         ])->content($btnLabel, [
             'button' => [
                 'type' => 'button',
-                'class' => "accordion-button$btnState",
+                'class' => "accordion-button$btnState" . $this->additionalClass,
                 'data-bs-toggle' => 'collapse',
                 'data-bs-target' => "#$bodyId",
                 'aria-expanded' => $show ? 'true' : 'false',
@@ -74,9 +61,9 @@ class Accordion
         $root = st()->elem([
             'div-1' => [
                 'id' => $bodyId,
-                'class' => 'accordion-collapse collapse' . $showAccordion,
+                'class' => 'accordion-collapse collapse' . $showAccordion . $this->additionalClass,
                 'aria-labelledby' => $headerId,
-                'data-bs-parent' => $this->alwaysOpen ? '' : "#$this->accordionId"
+                'data-bs-parent' => $this->alwaysOpen ? '' : "#$this->elemId"
             ],
             'div-2' => ['class' => 'accordion-body']
         ]);

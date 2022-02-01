@@ -3,7 +3,7 @@
 ## A PHP Bootstrap v5 Components.
 
 ### What is SimpleTagBootstrap?
-SimpleTagBootstrap is an object-oriented Bootstrap v5 components wrapper written with [SimpleTag](https://github.com/adnzaki/simple-tag) library. Its goal is to simplify usage of Bootstrap components while working with a lot of PHP codes. Just like <strong>SimpleTag</strong> that aims to make HTML programmable, this library aims to make Bootstrap usage easier and of course; programmable via PHP.
+SimpleTagBootstrap is an object-oriented Bootstrap v5 components wrapper written with [SimpleTag](https://github.com/adnzaki/simple-tag) library. Its goal is to simplify usage of Bootstrap components when working with a lot of PHP codes. Just like <strong>SimpleTag</strong> that aims to make HTML programmable, this library aims to make Bootstrap usage easier and of course; programmable via PHP.
 
 ### How it works?
 SimpleTagBootstrap comes with a lot of classes contain most of Bootstrap components. It is SimpleTag-based library that simplifies Bootstrap components writing by converting them into SimpleTag format. So, you only have to call any component with the classes that has been provided.
@@ -19,3 +19,11 @@ The important thing to activate SimpleTagBootstrap is calling the wrapper file o
 
 ### Initiator Function
 Every component in SimpleTagBootstrap defined in a class, but you do not have to initiate an object for each of them since we have "Initiator Function" that have done it for you. This function has the same name as its component class, for example `Accordion` class has initiator function called `accordion()`. So you can call the methods in that class directly without initiate an object first, like `accordion()->open()` to create accordion open tag. Those functions located on their class file and have been wrapped together in Wrapper file.
+
+### The `BaseClass` class
+SimpleTagBootstrap has a class called `BaseClass` that shares commonly-used features on HTML element. It has the following methods to be used on all components:
+- `BaseClass::slot(string|array $slots)` to insert slot into component, it can be a string or array and should be in SimpleTag's accepted format.
+- `BaseClass::addClass(string $class)` to add a custom class to component
+- `BaseClass::id(string $id)` to create an ID to component
+- `BaseClass::event(array $events = [])` to store event handler. You can pass any event handling attributes from pure Javascript to Javascript framework like Vue.js<br>
+Check out each of component's example to see how to use them.

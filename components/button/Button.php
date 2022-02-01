@@ -1,6 +1,13 @@
 <?php
 
-class Button
+/**
+ * Bootstrap's Button component
+ * 
+ * @author      Adnan Zaki
+ * @since       Jan-2022
+ * @package     Component
+ */
+class Button extends \BaseClass
 {
     private $outlined = false;
 
@@ -10,13 +17,7 @@ class Button
 
     private $btnTag = 'button';
 
-    private $events = [];
-
     private $textWrapping = true;
-
-    private $slots = 'none';
-
-    private $btnId = '';
 
     public function outline()
     {
@@ -51,30 +52,9 @@ class Button
         }        
     }
 
-    public function event(array $events = [])
-    {
-        $this->events = $events;
-
-        return $this;
-    }
-
     public function noWrap()
     {
         $this->textWrapping = false;
-
-        return $this;
-    }
-
-    public function slot($slots)
-    {
-        $this->slots = $slots;
-
-        return $this;
-    }
-
-    public function id(string $id)
-    {
-        $this->btnId = $id;
 
         return $this;
     }
@@ -108,16 +88,16 @@ class Button
 
         $attrs = [
             'a' => [
-                'class' => $baseClass . $anchorDisabled,
+                'class' => $baseClass . $anchorDisabled . $this->additionalClass,
                 'role'  => 'button',
                 'href'  => '#'
             ],
             'button' => [
-                'class' => $baseClass,
+                'class' => $baseClass . $this->additionalClass,
                 'type'  => $type
             ],
             'input' => [
-                'class' => $baseClass,
+                'class' => $baseClass . $this->additionalClass,
                 'type'  => $type,
                 'value' => $label
             ]
@@ -129,8 +109,8 @@ class Button
             $attrs[$this->btnTag] = array_merge($attrs[$this->btnTag], ['aria-disabled' => 'true']);
         }
 
-        if(! empty($this->btnId)) {
-            $attrs[$this->btnTag] = array_merge($attrs[$this->btnTag], ['id' => $this->btnId]);
+        if(! empty($this->elemId)) {
+            $attrs[$this->btnTag] = array_merge($attrs[$this->btnTag], ['id' => $this->elemId]);
         }
 
         // don't forget to include event handling

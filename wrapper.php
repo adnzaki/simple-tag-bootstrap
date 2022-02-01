@@ -22,6 +22,9 @@ function st() {
 // Include helper functions
 require_once 'helper.php';
 
+// Include BaseClass.php
+require_once 'BaseClass.php';
+
 // Wrap all components
 require_once 'components/accordion/Accordion.php';
 require_once 'components/button/Button.php';
