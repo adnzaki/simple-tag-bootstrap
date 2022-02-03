@@ -52,8 +52,9 @@ class Icons
           ->render();
     }
 
-        /**
+    /**
      * Render Webfont Icons only
+     * 
      * @param string $iconName
      * @param string $size
      * @param string $color
