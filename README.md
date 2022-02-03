@@ -15,7 +15,22 @@ No, you have two options to pass your HTML elements into SimpleTagBootstrap clas
 Just open up `components` directory in this repository, and dive into each component that has been provided. There you will see an example for each component.
 
 ### The "Wrapper" file
-The important thing to activate SimpleTagBootstrap is calling the wrapper file on top of your PHP codes. Check out `index.php` file to see the complete code sample to start using SimpleTagBootstrap. Remember that we do not include Bootstrap files in this repository, so you have to download the same Bootstrap version as in SimpleTagBootstrap.
+The important thing to activate SimpleTagBootstrap is calling the wrapper file on top of your PHP codes. Check out `index.php` file to see the complete code sample to start using SimpleTagBootstrap. Remember that we do not include Bootstrap files in this repository, so you have to download the same Bootstrap version as in SimpleTagBootstrap. But you can still see the complete directory structure below:
+```
+\bootstrap
+    \css
+    \icons
+    \js
+\components
+    .... the components folder 
+\custom-slots
+\simple-tag
+    .... SimpleTag library located here
+\test
+wrapper.php
+index.php
+.... and so on.
+```
 
 ### Initiator Function
 Every component in SimpleTagBootstrap defined in a class, but you do not have to initiate an object for each of them since we have "Initiator Function" that have done it for you. This function has the same name as its component class, for example `Accordion` class has initiator function called `accordion()`. So you can call the methods in that class directly without initiate an object first, like `accordion()->open()` to create accordion open tag. Those functions located on their class file and have been wrapped together in Wrapper file.

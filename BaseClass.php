@@ -11,7 +11,7 @@ class BaseClass
     /**
      * @var string|array
      */
-    protected $slots = 'none';
+    protected $slots = null;
 
     /**
      * @var string
