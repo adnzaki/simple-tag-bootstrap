@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SimpleTag with Boostrap</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/icons/font/bootstrap-icons.css">
     <style>
         .bd-example {
             padding: 1.5rem;
@@ -25,8 +26,8 @@
 
         // Just uncomment one of codes below to see it on the browser
         // require_once 'components/accordion/accordion-sample.php';
-        require_once 'components/button/button-sample.php';
-
+        // require_once 'components/button/button-sample.php';
+        require_once 'components/icons/icons-sample.php';
         ?>
         </div>
     </div>

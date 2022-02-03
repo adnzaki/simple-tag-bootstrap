@@ -28,3 +28,4 @@ require_once 'BaseClass.php';
 // Wrap all components
 require_once 'components/accordion/Accordion.php';
 require_once 'components/button/Button.php';
+require_once 'components/icons/Icons.php';
