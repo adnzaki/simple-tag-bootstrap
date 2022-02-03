@@ -8,7 +8,7 @@
  * @package     Library
  * @license     MIT
  * @copyright   Woles DevTeam (c) 2021
- * @version     0.2.2
+ * @version     0.2.3
  */
 
 class SimpleTag
@@ -79,7 +79,7 @@ class SimpleTag
     public function content(string $inner, $outer = 'div', array $style = [])
     {   
         $result = '';
-        if($outer !== 'none')
+        if($outer !== null)
         {
             if(is_array($outer))
             {   
