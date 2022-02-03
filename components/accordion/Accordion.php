@@ -58,7 +58,7 @@ class Accordion extends \BaseClass
     
         // generate body
         $show ? $showAccordion = ' show' : $showAccordion = '';
-        $root = st()->elem([
+        st()->elem([
             'div-1' => [
                 'id' => $bodyId,
                 'class' => 'accordion-collapse collapse' . $showAccordion . $this->additionalClass,
@@ -66,9 +66,7 @@ class Accordion extends \BaseClass
                 'data-bs-parent' => $this->alwaysOpen ? '' : "#$this->elemId"
             ],
             'div-2' => ['class' => 'accordion-body']
-        ]);
-    
-        $root->content($content, $this->slots)->render();
+        ])->content($content, $this->slots)->render();
     
         // close end tag
         close_tag();
