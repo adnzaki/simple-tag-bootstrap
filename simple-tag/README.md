@@ -62,6 +62,8 @@ Above codes will produce:
     </form>
 </div>
 ```
+## Render method
+`render()` method has one parameter called `$raw` with boolean type. Set it to true will give return value as a result. Otherwise, using `render()` method with an empty argument will automatically print HTML result to the browser using PHP `echo`. These options will allow users to choose whether they want to directly print the result to the browser or pass the result into variable or another action.
 
 ## Using multiple same elements
 Since SimpleTag uses array to create elements, so we cannot pass the same element tag in `elem()` method, for example: 
