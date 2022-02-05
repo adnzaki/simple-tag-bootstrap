@@ -43,13 +43,15 @@ class Icons
     {
         $svgSrc = $this->baseSvgUrl . 'bootstrap-icons.svg#' . $iconName;        
 
-        st()->elem('svg', [
-            'class' => 'bi',
-            'width' => $width > 0 ? (string)$width : (string)$this->defaultWidth,
-            'height'=> $height > 0 ? (string)$height : (string)$this->defaultHeight,
-            'fill'  => 'currentColor'
-        ])->content('', ['use' => ['xlink:href' => $svgSrc]])
-          ->render();
+        st()->elem([
+            'svg' => [
+                'class' => 'bi',
+                'width' => $width > 0 ? (string)$width : (string)$this->defaultWidth,
+                'height'=> $height > 0 ? (string)$height : (string)$this->defaultHeight,
+                'fill'  => 'currentColor'
+            ],
+            'use' => ['xlink:href' => $svgSrc]
+        ])->render();
     }
 
     /**
@@ -78,7 +80,7 @@ class Icons
             ? $attrs = array_merge($baseClass, ['style' => $style])
             : $attrs = $baseClass;
 
-        st()->elem('i', $attrs)->content('', null)->render();
+        st()->elem('i', $attrs)->render();
     }
 }
 
