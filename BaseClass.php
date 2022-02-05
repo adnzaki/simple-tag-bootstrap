@@ -29,11 +29,33 @@ class BaseClass
     protected $events = [];
 
     /**
+     * @var boolean
+     * 
+     * If set to TRUE, SimpleTag render() function
+     * will return HTML string, otherwise, it 
+     * will print the output directly to the browser
+     */
+    protected $sendAsValue = false;
+
+    /**
+     * Prevent SimpleTag render() function to send
+     * the output to the browser directly
+     * 
+     * @return \BaseClass
+     */
+    public function preventBrowserOutput()
+    {
+        $this->sendAsValue = true;
+
+        return $this;
+    }
+
+    /**
      * Add slot to SimpleTag::content()
      * 
      * @param string|array $slots
      * 
-     * @return BaseClass
+     * @return \BaseClass
      */
     public function slot(string|array $slots)
     {
@@ -47,7 +69,7 @@ class BaseClass
      * 
      * @param string $class
      * 
-     * @return BaseClass
+     * @return \BaseClass
      */
     public function addClass(string $class)
     { 
@@ -61,7 +83,7 @@ class BaseClass
      * 
      * @param string $id
      * 
-     * @return BaseClass
+     * @return \BaseClass
      */
     public function id(string $id)
     {
@@ -75,7 +97,7 @@ class BaseClass
      * 
      * @param array $events
      * 
-     * @return BaseClass
+     * @return \BaseClass
      */
     public function event(array $events = [])
     {
