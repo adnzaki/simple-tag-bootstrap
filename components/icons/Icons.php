@@ -7,7 +7,7 @@
  * @since       Jan-2022
  * @package     Icons
  */
-class Icons
+class Icons extends \BaseClass
 {
     private $baseSvgUrl = '';
 
@@ -15,6 +15,13 @@ class Icons
 
     private $defaultHeight = 16;
 
+    /**
+     * Use SVG icon-based
+     * 
+     * @param string $baseUrl Path to your bootstrap-icons.svg directory
+     * 
+     * @return \Icons
+     */
     public function useSvg(string $baseUrl)
     {
         $this->baseSvgUrl = $baseUrl;
@@ -37,21 +44,22 @@ class Icons
      * @param int $width
      * @param int $height
      * 
-     * @return void
+     * @return string
      */
     public function render(string $iconName, int $width = 0, int $height = 0)
     {
         $svgSrc = $this->baseSvgUrl . 'bootstrap-icons.svg#' . $iconName;        
 
-        st()->elem([
+        return st()->elem([
             'svg' => [
-                'class' => 'bi',
+                'class' => 'bi' . $this->additionalClass,
                 'width' => $width > 0 ? (string)$width : (string)$this->defaultWidth,
                 'height'=> $height > 0 ? (string)$height : (string)$this->defaultHeight,
-                'fill'  => 'currentColor'
+                'fill'  => 'currentColor',
+                'role'  => 'img'
             ],
             'use' => ['xlink:href' => $svgSrc]
-        ])->render();
+        ])->render(true);
     }
 
     /**
@@ -61,7 +69,7 @@ class Icons
      * @param string $size
      * @param string $color
      * 
-     * @return void
+     * @return string
      */
     public function font(string $iconName, string $size = '', string $color = '')
     {
@@ -74,13 +82,13 @@ class Icons
             $style['color'] = $color;
         }
 
-        $baseClass = ['class' => 'bi-'.$iconName];
+        $baseClass = ['class' => 'bi-'.$iconName . $this->additionalClass];
 
         count($style) > 0
             ? $attrs = array_merge($baseClass, ['style' => $style])
             : $attrs = $baseClass;
 
-        st()->elem('i', $attrs)->render();
+        return st()->elem('i', $attrs)->render(true);
     }
 }
 

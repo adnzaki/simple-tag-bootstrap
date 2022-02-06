@@ -16,32 +16,32 @@ $icons = icons()->useSvg(baseUrl('bootstrap/icons/'));
 
 st()->elem('h4')->content('Default size', null)->render();
 
-// render SVG icon with default size (24px x 24px)
-$icons->render('toggles');
-$icons->render('bell-fill');
-$icons->render('bookmark-check');
-$icons->render('calendar-date-fill');
-$icons->render('cart-check');
+// render SVG icon with default size (16px x 16px)
+echo $icons->render('toggles');
+echo $icons->render('bell-fill');
+echo $icons->render('bookmark-check');
+echo $icons->render('calendar-date-fill');
+echo $icons->render('cart-check');
 
 echo '<br><br>';
 
 st()->elem('h4')->content('Different sizes', null)->render();
-$icons->render('toggles', 24, 24);
-$icons->render('bell-fill', 32, 32);
-$icons->render('bookmark-check', 48, 48);
-$icons->render('calendar-date-fill', 60, 60);
-$icons->render('cart-check', 100, 100);
+echo $icons->render('toggles', 24, 24);
+echo $icons->render('bell-fill', 32, 32);
+echo $icons->render('bookmark-check', 48, 48);
+echo $icons->render('calendar-date-fill', 60, 60);
+echo $icons->render('cart-check', 100, 100);
 
 echo '<br><br>';
 
 st()->elem('h4')
     ->content('Overwrite default size', null)->render();
 $icons2 = $icons->setDefaultSize(48, 48);
-$icons2->render('toggles');
-$icons2->render('bell-fill');
-$icons2->render('bookmark-check');
-$icons2->render('calendar-date-fill');
-$icons2->render('cart-check');
+echo $icons2->render('toggles');
+echo $icons2->render('bell-fill');
+echo $icons2->render('bookmark-check');
+echo $icons2->render('calendar-date-fill');
+echo $icons2->render('cart-check');
 
 echo '<br><br><br>';
 
@@ -56,26 +56,26 @@ do it all manually.', null)->render();
 echo '<br>';
 st()->elem('h4')->content('Default size', null)->render();
 
-icons()->font('toggles');
-icons()->font('bell-fill');
-icons()->font('bookmark-check');
-icons()->font('calendar-date-fill');
-icons()->font('cart-check');
+echo icons()->font('toggles');
+echo icons()->font('bell-fill');
+echo icons()->font('bookmark-check');
+echo icons()->font('calendar-date-fill');
+echo icons()->font('cart-check');
 
 echo '<br><br>';
 
 st()->elem('h4')->content('Different sizes', null)->render();
-icons()->font('toggles', '24px');
-icons()->font('bell-fill', '32px');
-icons()->font('bookmark-check', '48px');
-icons()->font('calendar-date-fill', '60px');
-icons()->font('cart-check', '100px');
+echo icons()->font('toggles', '24px');
+echo icons()->font('bell-fill', '32px');
+echo icons()->font('bookmark-check', '48px');
+echo icons()->font('calendar-date-fill', '60px');
+echo icons()->font('cart-check', '100px');
 
 echo '<br><br>';
 
 st()->elem('h4')->content('Different colors', null)->render();
-icons()->font('toggles', '24px', 'cornflowerblue');
-icons()->font('bell-fill', '32px', 'cornflowerblue');
-icons()->font('bookmark-check', '48px', 'cornflowerblue');
-icons()->font('calendar-date-fill', '60px', 'cornflowerblue');
-icons()->font('cart-check', '100px', 'cornflowerblue');
+echo icons()->font('toggles', '24px', 'cornflowerblue');
+echo icons()->font('bell-fill', '32px', 'cornflowerblue');
+echo icons()->font('bookmark-check', '48px', 'cornflowerblue');
+echo icons()->font('calendar-date-fill', '60px', 'cornflowerblue');
+echo icons()->font('cart-check', '100px', 'cornflowerblue');
