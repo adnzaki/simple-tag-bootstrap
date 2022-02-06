@@ -90,4 +90,4 @@ SimpleTag is fully compatible to work with Vue.js as you can see in the above ex
 
 ## Notes
 This is early version of SimpleTag, it has minimum functionality to create HTML element with PHP,
-but many things need to be improved and bugs to fix, so any contributions are welcome here...
+but many things need to be improved and bugs to fix, so any contributions are welcome here. You can learn how to implement SimpleTag in real case at [SimpleTagBootstrap](https://github.com/adnzaki/simple-tag-bootstrap) repository. The project handled by creator of SimpleTag, so you can find what are things that you can build with it.
