@@ -38,6 +38,57 @@ class BaseClass
     protected $sendAsValue = false;
 
     /**
+     * @var string
+     */
+    protected $positionClass = '';
+
+    /**
+     * @var string
+     */
+    protected $positionType = 'position-absolute';
+
+    /**
+     * Set position of an element.
+     * See https://getbootstrap.com/docs/5.1/utilities/position/ for detail explanation.
+     * 
+     * @param string $positionStart
+     * @param string $positionEnd
+     * @param string $translate
+     * 
+     * @return \BaseClass
+     */
+    public function position(string $positionStart, string $positionEnd, string $translate = '')
+    {
+        $classArray = [
+            $this->positionType,
+            $positionStart,
+            $positionEnd,
+            ! empty($translate) ? 'translate-' . $translate : ''
+        ];
+
+        $this->positionClass = ' ' . implode(' ', $classArray);
+
+        return $this;
+    }
+
+    /**
+     * Set position values: static, relative, absolute, fixed, sticky
+     * 
+     * @param string $value
+     * 
+     * @return \BaseClass
+     */
+    public function positionType(string $value)
+    {
+        $acceptedValues = ['static', 'relative', 'absolute', 'fixed', 'sticky'];
+        if(array_search($value, $acceptedValues)) {
+            $this->positionType = 'position-' . $value;
+            
+            return $this;
+        }
+    }
+
+    /**
      * Prevent SimpleTag render() function to send
      * the output to the browser directly
      * 
@@ -67,13 +118,15 @@ class BaseClass
     /**
      * Add custom class to element
      * 
-     * @param string $class
+     * @param string|array $class
      * 
      * @return \BaseClass
      */
-    public function addClass(string $class)
+    public function addClass(string|array $class)
     { 
-        $this->additionalClass = " $class";
+        is_array($class)
+            ? $this->additionalClass = ' ' . implode(' ', $class)
+            : $this->additionalClass = " $class";
 
         return  $this;
     }
