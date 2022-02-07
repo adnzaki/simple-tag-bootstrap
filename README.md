@@ -38,7 +38,7 @@ Every component in SimpleTagBootstrap defined in a class, but you do not have to
 ### The `BaseClass` class
 SimpleTagBootstrap has a class called `BaseClass` that shares commonly-used features on HTML element. It has the following methods to be used on all components:
 - `BaseClass::slot(string|array $slots)` to insert slot into component, it can be a string or array and should be in SimpleTag's accepted format.
-- `BaseClass::addClass(string $class)` to add a custom class to component
+- `BaseClass::addClass(string|array $class)` to add a custom class to component
 - `BaseClass::id(string $id)` to create an ID to component
 - `BaseClass::event(array $events = [])` to store event handler. You can pass any event handling attributes from pure Javascript to Javascript framework like Vue.js<br>
 Check out each of component's example to see how to use them.
