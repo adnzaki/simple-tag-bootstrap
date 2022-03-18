@@ -65,10 +65,11 @@ class Button extends \BaseClass
      * @param string $color
      * @param string $label Button label
      * @param string $type The button type: button, submit, reset
+     * @param boolean $raw Whether to render button to the browser directly or not
      * 
      * @return string
      */
-    public function render(string $color, string $label, string $type = 'button')
+    public function render(string $color, string $label, string $type = 'button', $raw = false)
     {
         $baseClass = 'btn btn-';
 
@@ -120,9 +121,9 @@ class Button extends \BaseClass
             ? $content = ''
             : $content = $label;
 
-        st()->elem($this->btnTag, $attrs[$this->btnTag])
+        return st()->elem($this->btnTag, $attrs[$this->btnTag])
             ->content($content, $this->slots)
-            ->render();
+            ->render($raw);
     }
 }
 
