@@ -30,3 +30,4 @@ require_once 'components/accordion/Accordion.php';
 require_once 'components/button/Button.php';
 require_once 'components/icons/Icons.php';
 require_once 'components/alert/Alert.php';
+require_once 'components/forms/select/Select.php';

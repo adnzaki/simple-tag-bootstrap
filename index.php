@@ -28,7 +28,8 @@
         // require_once 'components/accordion/accordion-sample.php';
         // require_once 'components/button/button-sample.php';
         // require_once 'components/icons/icons-sample.php';
-        require_once 'components/alert/alert-sample.php';
+        // require_once 'components/alert/alert-sample.php';
+        require_once 'components/forms/select/select-sample.php';
         ?>
         </div>
     </div>

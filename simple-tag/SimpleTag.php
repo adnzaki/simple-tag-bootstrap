@@ -208,8 +208,13 @@ class SimpleTag
             {
                 if($key !== 'style')
                 {
-                    // create attribute like class="center"
-                    $attr .= ' ' . $key . '="' . $val .'"';
+                    if(gettype($key) === 'integer') {
+                        // create boolean attribute like <option selected></option>
+                        $attr .= ' ' . $val;
+                    } else {
+                        // create attribute like class="center"
+                        $attr .= ' ' . $key . '="' . $val .'"';
+                    }
                 }
                 else
                 {
