@@ -80,6 +80,13 @@ class Select extends \BaseClass
         return $this;
     }
 
+    /**
+     * The select renderer
+     * 
+     * @param boolean $raw
+     * 
+     * @return string|void
+     */
     public function render(bool $raw = false)
     {
         $attrs = array_merge(

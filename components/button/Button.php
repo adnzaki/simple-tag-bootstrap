@@ -60,14 +60,14 @@ class Button extends \BaseClass
     }
 
     /**
-     * The button renderer function
+     * The button renderer
      * 
      * @param string $color
      * @param string $label Button label
      * @param string $type The button type: button, submit, reset
      * @param boolean $raw Whether to render button to the browser directly or not
      * 
-     * @return string
+     * @return string|void
      */
     public function render(string $color, string $label, string $type = 'button', $raw = false)
     {
