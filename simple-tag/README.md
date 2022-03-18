@@ -83,7 +83,7 @@ $elems = [
 In this case, you have to add "-" character before your unique ID. You can add anything after "-" character, but we recommend using incremental numbers to make them easy to read. SimpleTag will automatically render those same elements with the correct element tag.
 
 ## Text only content
-There will be a case where you only want to put some texts into `contet()`. To handle this, you can pass `null` to the second argument of `content()`. By doing this, SimpleTag will not create any HTML element to the inner HTML.
+There will be a case where you only want to put some texts into `content()`. To handle this, you can pass `null` to the second argument of `content()`. By doing this, SimpleTag will not create any HTML element to the inner HTML.
 
 ## Vue.js user? You are in the right place!
 SimpleTag is fully compatible to work with Vue.js as you can see in the above example. And of course, SimpleTag can also receive native Javascript event handling. Try it from `index.php` file! 
