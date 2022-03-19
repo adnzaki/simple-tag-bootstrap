@@ -12,10 +12,5 @@ Add `multiple` attribute into `<select>`
 Create custom multiple `<select>` size. This method can only be used along with `multiple()` method.
 - `Select::title(string $label, bool $isSelected = true)`<br>
 Add default selected/title into `<option>` that will be rendered before other options.
-- `Select::setOptions(array $options)`<br>
-Add options into `<select>` component. `$options` must be in the following format:
-```
-[ ['label' => 'some text', 'value' => '1'] ]
-```
-- `Select::render(bool $raw = false)`<br>
-Render `<select>` component to the browser. Set `$raw` to `true` will make `<select>` can be used as child component to other component. 
+- `Select::render(array $options, bool $raw = false)`<br>
+Render `<select>` component to the browser. `$options` should have the following format: `[ ['label' => 'some text', 'value' => '1'] ]`. Set `$raw` to `true` will make `<select>` can be used as child component to other component. 

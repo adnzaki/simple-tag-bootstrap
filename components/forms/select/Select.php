@@ -12,8 +12,6 @@ class Select extends \BaseClass
 
     private $multipleSelect = [];
 
-    private $options = [];
-
     private $selectTitle = '';
 
     private $multipleSize = [];
@@ -67,27 +65,14 @@ class Select extends \BaseClass
     }    
 
     /**
-     * Set select options list
-     * 
-     * @param array $options | Example: [ ['label' => 'some text', 'value' => '1'] ]
-     */
-    public function setOptions(array $options)
-    {
-        foreach($options as $opt) {
-            $this->options[] = $opt;
-        }
-
-        return $this;
-    }
-
-    /**
      * The select renderer
      * 
+     * @param array $options
      * @param boolean $raw
      * 
      * @return string|void
      */
-    public function render(bool $raw = false)
+    public function render(array $options, bool $raw = false)
     {
         $attrs = array_merge(
             ['class' => $this->defaultClass . $this->additionalClass],
@@ -105,7 +90,7 @@ class Select extends \BaseClass
             ]);
         }
         
-        foreach($this->options as $opt) {
+        foreach($options as $opt) {
             $select->content($opt['label'], [
                 'option' => ['value' => $opt['value']]
             ]);
