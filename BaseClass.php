@@ -26,7 +26,7 @@ class BaseClass
     /**
      * @var array
      */
-    protected $events = [];
+    protected $attributes = [];
 
     /**
      * @var boolean
@@ -148,13 +148,13 @@ class BaseClass
     /**
      * Store event handler
      * 
-     * @param array $events
+     * @param array $attributes
      * 
      * @return \BaseClass
      */
-    public function event(array $events = [])
+    public function attrs(array $attributes = [])
     {
-        $this->events = $events;
+        $this->attributes = $attributes;
 
         return $this;
     }

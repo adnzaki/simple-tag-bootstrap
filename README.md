@@ -40,7 +40,7 @@ SimpleTagBootstrap has a class called `BaseClass` that shares commonly-used feat
 - `BaseClass::slot(string|array $slots)` to insert slot into component, it can be a string or array and should be in SimpleTag's accepted format.
 - `BaseClass::addClass(string|array $class)` to add a custom class to component
 - `BaseClass::id(string $id)` to create an ID to component
-- `BaseClass::event(array $events = [])` to store event handler. You can pass any event handling attributes from pure Javascript to Javascript framework like Vue.js<br>
+- `BaseClass::attrs(array $attributes = [])` to store additional attributes for your element. Additional attributes mostly used to define event handling, but in other case it can be used for any advanced HTML options like Vue's custom HTML attributes, eg. `v-model`, `v-bind`, `v-if`, etc.<br>
 Check out each of component's example to see how to use them.
 - `BaseClass::preventBrowserOutput()` to prevent SimpleTag `render()` function from directly send the output to the browser. By running this method, you have to use `echo` statement when calling component's render method.
 - `BaseClass::position(string $positionStart, string $positionEnd, string $translate = '')` to set position of an element. Click [here](https://getbootstrap.com/docs/5.1/utilities/position/) for more detail explanation.
