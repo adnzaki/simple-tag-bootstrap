@@ -1,2 +1,11 @@
 test
-bootstrap
+bootstrap/css/*
+bootstrap/js/*
+bootstrap/icons/*
+bootstrap/backup
+!bootstrap/css/bootstrap.min.css
+!bootstrap/css/bootstrap.rtl.min.css
+!bootstrap/js/bootstrap.min.js
+!bootstrap/icons/icons
+!bootstrap/icons/font
+!bootstrap/icons/bootstrap-icons.svg
