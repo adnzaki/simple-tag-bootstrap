@@ -4,6 +4,7 @@ bootstrap/js/*
 bootstrap/icons/*
 bootstrap/backup
 bootstrap/icons/font/index.html
+vendor
 !bootstrap/css/bootstrap.min.css
 !bootstrap/css/bootstrap.rtl.min.css
 !bootstrap/js/bootstrap.min.js
