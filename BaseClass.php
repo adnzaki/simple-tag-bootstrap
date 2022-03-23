@@ -55,7 +55,7 @@ class BaseClass
      * @param string $positionEnd
      * @param string $translate
      * 
-     * @return \BaseClass
+     * @return this
      */
     public function position(string $positionStart, string $positionEnd, string $translate = '')
     {
@@ -76,7 +76,7 @@ class BaseClass
      * 
      * @param string $value
      * 
-     * @return \BaseClass
+     * @return this
      */
     public function positionType(string $value)
     {
@@ -92,7 +92,7 @@ class BaseClass
      * Prevent SimpleTag render() function to send
      * the output to the browser directly
      * 
-     * @return \BaseClass
+     * @return this
      */
     public function preventBrowserOutput()
     {
@@ -103,10 +103,13 @@ class BaseClass
 
     /**
      * Add slot to SimpleTag::content()
+     * Note: 
+     * Not all components support slot(), see the API Docs
+     * for each component to know them.
      * 
      * @param string|array $slots
      * 
-     * @return \BaseClass
+     * @return this
      */
     public function slot(string|array $slots)
     {
@@ -120,7 +123,7 @@ class BaseClass
      * 
      * @param string|array $class
      * 
-     * @return \BaseClass
+     * @return this
      */
     public function addClass(string|array $class)
     { 
@@ -136,7 +139,7 @@ class BaseClass
      * 
      * @param string $id
      * 
-     * @return \BaseClass
+     * @return this
      */
     public function id(string $id)
     {
@@ -146,15 +149,15 @@ class BaseClass
     }
     
     /**
-     * Store event handler
+     * Store element attributes
      * 
      * @param array $attributes
      * 
-     * @return \BaseClass
+     * @return this
      */
-    public function attrs(array $attributes = [])
+    public function attr(array $attributes = [])
     {
-        $this->attributes = $attributes;
+        $this->attributes = array_merge($this->attributes, $attributes);
 
         return $this;
     }
