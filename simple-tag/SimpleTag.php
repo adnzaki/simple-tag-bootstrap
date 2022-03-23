@@ -94,7 +94,9 @@ class SimpleTag
                 $closeTagWrapper = [];
                 foreach($tags as $tag)
                 {
-                    $closeTagWrapper[] = "</$tag>";
+                    if($tag !== 'input') {
+                        $closeTagWrapper[] = "</$tag>";
+                    }
                 }
     
                 $closeTag = implode('', array_reverse($closeTagWrapper));
@@ -153,7 +155,7 @@ class SimpleTag
                 $val = substr($val, 0, $pos);
             }
             if($val !== 'input') {
-                $wrapper[] = "</$val>";
+                $wrapper[] = "</$val>\n";
             }
         }
 
