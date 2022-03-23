@@ -143,9 +143,7 @@ class BaseClass
      */
     public function id(string $id)
     {
-        $this->elemId = $id;
-
-        return $this;
+        return $this->attr(['id' => $id]);
     }
     
     /**

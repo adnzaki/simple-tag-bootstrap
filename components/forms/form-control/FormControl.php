@@ -4,17 +4,11 @@ class FormControl extends \BaseClass
 {
     private $label = '';
 
-    private $inputName = '';
-
-    private $inputType = 'text'; // the input type [text, email, password, submit, etc.]
-
     private $fieldType = 'input'; // <textarea> or <input>
 
     private $divClass = '';
 
     private $inputClass = 'form-control';
-
-    private $value = '';
 
     private $labelClass = 'form-label';
 
@@ -29,9 +23,7 @@ class FormControl extends \BaseClass
 
     public function name(string $name)
     {
-        $this->inputName = $name;
-
-        return $this;
+        return $this->attr(['name' => $name]);
     }
 
     public function textarea(int $rows = 3)
@@ -44,7 +36,7 @@ class FormControl extends \BaseClass
     public function type(string $type)
     {
         if($this->fieldType !== 'textarea') {
-            $this->inputType = $type;
+            $this->attr(['type' => $type]);
 
             if($type === 'color') {
                 $this->inputClass .= " $this->inputClass-color";
@@ -88,9 +80,7 @@ class FormControl extends \BaseClass
 
     public function value($value)
     {
-        $this->value = htmlspecialchars($value);
-
-        return $this;
+        return $this->attr(['value' => htmlspecialchars($value)]);
     }
 
     /**
@@ -163,11 +153,7 @@ class FormControl extends \BaseClass
     public function render(bool $raw = false)
     {
         $attrs = array_merge(
-            $this->fieldType === 'input' ? ['type' => $this->inputType] : [],
             $this->attributes,
-            empty($this->elemId) ? [] : ['id' => $this->elemId],
-            empty($this->inputName) ? [] : ['name' => $this->inputName],
-            empty($this->value) ? [] : ['value' => $this->value],
             ['class' => $this->inputClass . $this->additionalClass]
         );
 
