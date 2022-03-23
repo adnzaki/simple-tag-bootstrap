@@ -53,7 +53,7 @@ index.php
 ```
 
 ### Bootstrap Files
-We have included necessary Bootstrap files to ease you when working with SimpleTagBootstrap. With this way, you have two advantages out of the box:
+We have included necessary Bootstrap files to ease you when working with SimpleTagBootstrap. With this way, you have some advantages as follow:
 - Keep your Bootstrap up-to-date
 - Keep Bootstrap version the same as in SimpleTagBootstrap.
 - No need to download Bootstrap outside
