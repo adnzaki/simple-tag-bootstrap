@@ -3,7 +3,24 @@
 ## A Bootstrap v5 Components Adapter for PHP
 
 ### What is SimpleTagBootstrap?
-SimpleTagBootstrap is an object-oriented Bootstrap v5 components wrapper written with [SimpleTag](https://github.com/adnzaki/simple-tag) library. Its goal is to simplify usage of Bootstrap components when working with a lot of PHP codes. Just like <strong>SimpleTag</strong> that aims to make HTML programmable, this library aims to make Bootstrap usage easier and of course; programmable via PHP.
+SimpleTagBootstrap is an object-oriented Bootstrap v5 components adapter written with [SimpleTag](https://github.com/adnzaki/simple-tag) library. Its goal is to simplify usage of Bootstrap components when working with a lot of PHP codes. Just like <strong>SimpleTag</strong> that aims to make HTML programmable, this library aims to make Bootstrap usage easier and of course; programmable via PHP.
+
+### Installation
+#### Composer
+We recommend you to install SimpleTagBootstrap via [Composer](https://getcomposer.org/), since it will ease you to update it. Other than that, if you have other libraries installed from composer, you will get advantages of autoloading that will not require you to include "wrapper.php" each time. Just type the command below to install:
+```
+composer require adnzaki/simple-tag-bootstrap
+```
+Or if you have a `composer.json` file, simply add requirement pointed to the package name:
+```
+"require": {
+    "adnzaki/simple-tag-bootstrap": "^0.1.0",
+}
+```
+If you consider to get the latest source code, change "^0.1.0" into "dev-master", so it will download unreleased version of SimpleTagBootstrap.<br>
+Then simply run `composer update` to install it.
+#### Manual Download
+You can manually download SimpleTagBootstrap directly from this repository. Just point to "Code" menu and choose "Download ZIP" to download the latest source code or go to "Release" menu and find the latest stable version.
 
 ### Ability
 With SimpleTagBootstrap, we try to cover everything that Bootstrap components can do. For example in `<input>` element, Bootstrap has many options needed by developer to build an input form, so we have adopted those options to be used in SimpleTagBootstrap as well.
