@@ -5,17 +5,20 @@
 ### What is SimpleTagBootstrap?
 SimpleTagBootstrap is an object-oriented Bootstrap v5 components wrapper written with [SimpleTag](https://github.com/adnzaki/simple-tag) library. Its goal is to simplify usage of Bootstrap components when working with a lot of PHP codes. Just like <strong>SimpleTag</strong> that aims to make HTML programmable, this library aims to make Bootstrap usage easier and of course; programmable via PHP.
 
+### Ability
+With SimpleTagBootstrap, we try to cover everything that Bootstrap components can do. For example in `<input>` element, Bootstrap has many options needed by developer to build an input form, so we have adopted those options to be used in SimpleTagBootstrap as well.
+
 ### How it works?
 SimpleTagBootstrap comes with a lot of classes contain most of Bootstrap components. It is SimpleTag-based library that simplifies Bootstrap components writing by converting them into SimpleTag format. So, you only have to call any component with the classes that has been provided.
 
 ### Should I learn SimpleTag as well?
-No, you have two options to pass your HTML elements into SimpleTagBootstrap class methods; with SimpleTag format or separate HTML file. But it will be a good practice if you learn some basic usage of SimpleTag, while it allows you to fully write your Bootstrap components without writing any HTML code.
+No, you have two options to pass your HTML elements into SimpleTagBootstrap class methods; with SimpleTag format or separate HTML file. But in certain cases, you need some basic usage of SimpleTag, it allows you to fully write your Bootstrap components without writing any HTML code.
 
 ### Where is the example?
 Just open up `components` directory in this repository, and dive into each component that has been provided. There you will see an example for each component.
 
 ### The "Wrapper" file
-The important thing to activate SimpleTagBootstrap is calling the wrapper file on top of your PHP codes. Check out `index.php` file to see the complete code sample to start using SimpleTagBootstrap. Remember that we do not include Bootstrap files in this repository, so you have to download the same Bootstrap version as in SimpleTagBootstrap. But you can still see the complete directory structure below:
+The important thing to activate SimpleTagBootstrap is calling the wrapper file on top of your PHP codes. Check out `index.php` file to see the complete code sample to start using SimpleTagBootstrap. Check out our SimpleTagBootstrap directory structure below before diving into the source code:
 ```
 \bootstrap
     \css
@@ -32,6 +35,13 @@ index.php
 .... and so on.
 ```
 
+### Bootstrap Files
+We have included necessary Bootstrap files to ease you when working with SimpleTagBootstrap. With this way, you have two advantages out of the box:
+- Keep your Bootstrap up-to-date
+- Keep Bootstrap version the same as in SimpleTagBootstrap.
+- No need to download Bootstrap outside
+- Just a single step needed to update a whole SimpleTagBootstrap
+
 ### Initiator Function
 Every component in SimpleTagBootstrap defined in a class, but you do not have to initiate an object for each of them since we have "Initiator Function" that have done it for you. This function has the same name as its component class, for example `Accordion` class has initiator function called `accordion()`. So you can call the methods in that class directly without initiate an object first, like `accordion()->open()` to create accordion open tag. Those functions located on their class file and have been wrapped together in Wrapper file.
 
@@ -40,7 +50,7 @@ SimpleTagBootstrap has a class called `BaseClass` that shares commonly-used feat
 - `BaseClass::slot(string|array $slots)` to insert slot into component, it can be a string or array and should be in SimpleTag's accepted format.
 - `BaseClass::addClass(string|array $class)` to add a custom class to component
 - `BaseClass::id(string $id)` to create an ID to component
-- `BaseClass::attrs(array $attributes = [])` to store additional attributes for your element. Additional attributes mostly used to define event handling, but in other case it can be used for any advanced HTML options like Vue's custom HTML attributes, eg. `v-model`, `v-bind`, `v-if`, etc.<br>
+- `BaseClass::attr(array $attributes = [])` to store additional attributes for your element. Additional attributes mostly used to define event handling, but in other case it can be used for any advanced HTML options like Vue's custom HTML attributes, eg. `v-model`, `v-bind`, `v-if`, etc. We also use this method internally to build up SimpleTagBootstrap components.<br>
 Check out each of component's example to see how to use them.
 - `BaseClass::preventBrowserOutput()` to prevent SimpleTag `render()` function from directly send the output to the browser. By running this method, you have to use `echo` statement when calling component's render method.
 - `BaseClass::position(string $positionStart, string $positionEnd, string $translate = '')` to set position of an element. Click [here](https://getbootstrap.com/docs/5.1/utilities/position/) for more detail explanation.
