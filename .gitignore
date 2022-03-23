@@ -3,6 +3,7 @@ bootstrap/css/*
 bootstrap/js/*
 bootstrap/icons/*
 bootstrap/backup
+bootstrap/icons/font/index.html
 !bootstrap/css/bootstrap.min.css
 !bootstrap/css/bootstrap.rtl.min.css
 !bootstrap/js/bootstrap.min.js
