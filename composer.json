@@ -1,0 +1,19 @@
+{
+    "name": "adnzaki/simple-tag-bootstrap",
+    "description": "A Bootstrap v5 Components Adapter for PHP",
+    "license": "MIT", 
+    "homepage": "https://github.com/adnzaki/simple-tag-bootstrap",   
+    "authors": [
+        {
+            "name": "Adnan Zaki",
+            "email": "adnanzaki@wolestech.com"
+        }
+    ],
+    "autoload": {
+        "files": [ "wrapper.php" ]
+    },
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "minimum-stability": "dev"
+}
