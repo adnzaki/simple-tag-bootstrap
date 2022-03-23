@@ -1,6 +1,6 @@
 # SimpleTagBootstrap
 
-## A PHP Bootstrap v5 Components.
+## A Bootstrap v5 Components Adapter for PHP
 
 ### What is SimpleTagBootstrap?
 SimpleTagBootstrap is an object-oriented Bootstrap v5 components wrapper written with [SimpleTag](https://github.com/adnzaki/simple-tag) library. Its goal is to simplify usage of Bootstrap components when working with a lot of PHP codes. Just like <strong>SimpleTag</strong> that aims to make HTML programmable, this library aims to make Bootstrap usage easier and of course; programmable via PHP.
