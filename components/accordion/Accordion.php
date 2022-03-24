@@ -11,18 +11,15 @@ class Accordion extends \BaseClass
 {
     private $alwaysOpen = false;
 
-    public function __construct()
-    {
-        $this->elemId = 'my-accordion';
-    }
-
     public function open(bool $flush = false)
     {
+        $this->attributes['id'] = 'my-accordion';
+
         $flush
             ? $accordionType = 'accordion accordion-flush'
             : $accordionType = 'accordion';
 
-        echo '<div class="' . $accordionType . '" id="'. $this->elemId .'">';
+        echo '<div class="' . $accordionType . '" id="'. $this->attributes['id'] .'">';
     }
 
     public function setAlwaysOpen()
@@ -63,7 +60,7 @@ class Accordion extends \BaseClass
                 'id' => $bodyId,
                 'class' => 'accordion-collapse collapse' . $showAccordion . $this->additionalClass,
                 'aria-labelledby' => $headerId,
-                'data-bs-parent' => $this->alwaysOpen ? '' : "#$this->elemId"
+                'data-bs-parent' => $this->alwaysOpen ? '' : '#' . $this->attributes['id']
             ],
             'div-2' => ['class' => 'accordion-body']
         ])->content($content, $this->slots)->render();

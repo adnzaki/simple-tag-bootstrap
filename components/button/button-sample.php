@@ -1,54 +1,47 @@
 <?php
 
 st()->elem('h4')->content('Standard buttons', null)->render();
-button()->id('my-button')->render('primary', 'Primary'); // with ID
-button()->addClass('text-nowrap')->render('secondary', 'Secondary'); // add .text-nowrap class
-button()->render('success', 'Success');
-button()->render('danger', 'Danger');
-button()->render('warning', 'Warning');
-button()->render('info', 'Info');
-button()->render('light', 'Light');
-button()->render('dark', 'Dark');
-button()->render('link', 'Link');
+button('primary', 'Primary')->id('my-button')->render(); // with ID
+button('secondary', 'Secondary')->addClass('text-nowrap')->render('secondary', 'Secondary'); // add .text-nowrap class
+button('success', 'Success')->render();
+button('danger', 'Danger')->render();
+button('warning', 'Warning')->render();
+button('info', 'Info')->render();
+button('light', 'Light')->render();
+button('dark', 'Dark')->render();
+button('link', 'Link')->render();
 
 echo '<br><br>';
 st()->elem('h4')->content('Button tags', null)->render();
-button()->tag('a')->render('primary', 'Link');
-button()->render('primary', 'Button', 'submit');
-button()->tag('input')->render('primary', 'Input');
-button()->tag('input')->render('primary', 'Submit', 'submit');
-button()->tag('input')->render('primary', 'Reset', 'reset');
+button('primary', 'Link')->tag('a')->render();
+button('primary', 'Button')->type('submit')->render();
+button('primary', 'Input')->tag('input')->render();
+button('primary', 'Submit')->tag('input')->render();
+button('primary', 'Reset')->tag('input')->type('reset')->render();
 
 echo '<br><br>';
 st()->elem('h4')->content('Outline buttons', null)->render();
-button()->outline()->slot('strong')->render('primary', 'Primary');
-button()->outline()->render('secondary', 'Secondary');
-button()->outline()->render('success', 'Success');
-button()->outline()->render('danger', 'Danger');
-button()->outline()->render('warning', 'Warning');
-button()->outline()->render('info', 'Info');
-button()->outline()->render('light', 'Light');
-button()->outline()->render('dark', 'Dark');
-button()->outline()->render('link', 'Link');
+button('primary', 'Primary')->outline()->slot('strong')->render();
+button('secondary', 'Secondary')->outline()->render();
+button('success', 'Success')->outline()->render();
+button('danger', 'Danger')->outline()->render();
+button('warning', 'Warning')->outline()->render();
+button('info', 'Info')->outline()->render();
+button('light', 'Light')->outline()->render();
+button('dark', 'Dark')->outline()->render();
+button('link', 'Link')->outline()->render();
 
 echo '<br><br>';
 st()->elem('h4')->content('Sizes', null)->render();
-button()->size('lg')->render('primary', 'Large button');
-button()->size('sm')->render('secondary', 'Small button');
+button('primary', 'Large button')->size('lg')->render();
+button('secondary', 'Small button')->size('sm')->render();
 
 echo '<br><br>';
 st()->elem('h4')->content('Disabled state', null)->render();
-button()->disable()->render('primary', 'Disabled button');
-button()->tag('a')->disable()->render('secondary', 'Disabled button using ' . htmlspecialchars('<a>') . ' element');
+button('primary', 'Disabled button')->disable()->render();
+button('secondary', 'Disabled button using ' . htmlspecialchars('<a>') . ' element')->tag('a')->disable()->render();
 
 echo '<br><br>';
 st()->elem('h4')->content('Event handling', null)->render();
-button()->event(['@click' => 'greetings'])->render('primary', 'Combine event handing with Vue.js');
-button()->event(['onclick' => 'hello'])->render('primary', 'Event handing using standard Javascript');
-
-// Note:
-st()->elem('p')
-    ->content('Note: You can pass event handling as many as you 
-                want by adding them to event()\'s array argument
-                (See the example on source code).', 'i')
-    ->render();
+button('primary', 'Combine event handing with Vue.js')->attr(['@click' => 'greetings'])->render();
+button('primary', 'Event handing using standard Javascript')->attr(['onclick' => 'hello'])->render();

@@ -9,34 +9,61 @@
  */
 class Button extends \BaseClass
 {
-    private $outlined = false;
+    private $baseClass = 'btn btn-';
 
-    private $disabled = false;
+    private $btnLabel = '';
 
-    private $btnSize = '';
+    private $btnColor = '';
 
     private $btnTag = 'button';
 
-    private $textWrapping = true;
+    public function __construct(string $color, string $label)
+    {
+        $this->baseClass .= $color;
+        $this->btnLabel = $label;
+        $this->btnColor = $color;
+        $this->attributes['type'] = 'button';
 
+        return $this;
+    }
+
+    public function type(string $type)
+    {
+        $this->attributes['type'] = $type;
+        
+        return $this;
+    }
+
+    /**
+     * CAUTION!!
+     * This method will overwrite the button class,
+     * you must use this method before other modifier 
+     * like disable(), size() and noWrap()
+     * 
+     * @return this
+     */
     public function outline()
     {
-        $this->outlined = true;
+        $this->baseClass = "btn btn-outline-$this->btnColor";
 
         return $this;
     }
 
     public function disable()
     {
-        $this->disabled = true;
+        $this->baseClass .= ' disabled';
 
-        return $this;
+        $disabled = $this->btnTag === 'a'
+            ? ['aria-disabled' => 'true']
+            : ['disabled'];
+
+        return $this->attr($disabled);
     }
 
     public function size(string $size)
     {
         if($size === 'sm' || $size === 'lg') {
-            $this->btnSize = " btn-$size";
+            $this->baseClass .= " btn-$size";
     
             return $this;
         }
@@ -54,7 +81,7 @@ class Button extends \BaseClass
 
     public function noWrap()
     {
-        $this->textWrapping = false;
+        $this->baseClass .= ' text-nowrap';
 
         return $this;
     }
@@ -62,74 +89,47 @@ class Button extends \BaseClass
     /**
      * The button renderer
      * 
-     * @param string $color
-     * @param string $label Button label
-     * @param string $type The button type: button, submit, reset
      * @param boolean $raw Whether to render button to the browser directly or not
      * 
      * @return string|void
      */
-    public function render(string $color, string $label, string $type = 'button', $raw = false)
+    public function render($raw = false)
     {
-        $baseClass = 'btn btn-';
-
-        $this->outlined
-            ? $baseClass .= "outline-$color"
-            : $baseClass .= $color;
-
-        if(! empty($this->btnSize)) {
-            $baseClass .= $this->btnSize;
-        }
-
-        if(! $this->textWrapping) {
-            $baseClass .= ' text-nowrap';
-        }
-
-        $this->disabled ? $anchorDisabled = ' disabled' : $anchorDisabled = '';
-
-        $attrs = [
+        $baseAttrs = [
             'a' => [
-                'class' => $baseClass . $anchorDisabled . $this->additionalClass,
+                'class' => $this->baseClass . $this->additionalClass,
                 'role'  => 'button',
                 'href'  => '#'
             ],
             'button' => [
-                'class' => $baseClass . $this->additionalClass,
-                'type'  => $type
+                'class' => $this->baseClass . $this->additionalClass,
+                'type'  => $this->attributes['type']
             ],
             'input' => [
-                'class' => $baseClass . $this->additionalClass,
-                'type'  => $type,
-                'value' => $label
+                'class' => $this->baseClass . $this->additionalClass,
+                'type'  => $this->attributes['type'],
+                'value' => $this->btnLabel
             ]
         ];
 
-        if($this->disabled && $this->btnTag !== 'a') {
-            $attrs[$this->btnTag] = array_merge($attrs[$this->btnTag], ['disabled' => 'true']);
-        } elseif($this->btnTag === 'a' && $this->disabled) {
-            $attrs[$this->btnTag] = array_merge($attrs[$this->btnTag], ['aria-disabled' => 'true']);
-        }
-
-        if(! empty($this->elemId)) {
-            $attrs[$this->btnTag] = array_merge($attrs[$this->btnTag], ['id' => $this->elemId]);
-        }
-
-        // don't forget to include event handling
-        $attrs[$this->btnTag] = array_merge($attrs[$this->btnTag], $this->events);
+        $attrs = array_merge(
+            $baseAttrs[$this->btnTag],
+            $this->attributes
+        );
 
         $this->btnTag === 'input'
             ? $content = ''
-            : $content = $label;
+            : $content = $this->btnLabel;
 
-        return st()->elem($this->btnTag, $attrs[$this->btnTag])
+        return st()->elem($this->btnTag, $attrs)
             ->content($content, $this->slots)
             ->render($raw);
     }
 }
 
 if(! function_exists('button')) {
-    function button()
+    function button($color, $label)
     {
-        return new Button;
+        return new Button($color, $label);
     }
 }

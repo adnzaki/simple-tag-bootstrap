@@ -53,8 +53,8 @@ class Icons extends \BaseClass
         return st()->elem([
             'svg' => [
                 'class' => 'bi' . $this->additionalClass,
-                'width' => $width > 0 ? (string)$width : (string)$this->defaultWidth,
-                'height'=> $height > 0 ? (string)$height : (string)$this->defaultHeight,
+                'width' => $width > 0 ? $width : $this->defaultWidth,
+                'height'=> $height > 0 ? $height : $this->defaultHeight,
                 'fill'  => 'currentColor',
                 'role'  => 'img'
             ],

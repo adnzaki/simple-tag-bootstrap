@@ -6,15 +6,7 @@ class Select extends \BaseClass
 
     private $size = '';
 
-    private $disabled = [];
-
-    private $ariaLabel = ['aria-label' => 'Select an option'];
-
-    private $multipleSelect = [];
-
     private $selectTitle = '';
-
-    private $multipleSize = [];
 
     public function size(string $size)
     {
@@ -26,30 +18,22 @@ class Select extends \BaseClass
 
     public function disable()
     {
-        $this->disabled = ['disabled'];
-
-        return $this;
+        return $this->attr(['disabled']);
     }
 
     public function aria(string $text)
     {
-        $this->ariaLabel = ['aria-label' => $text];
-
-        return $this;
+        return $this->attr(['aria-label' => $text]);
     }
 
     public function multiple()
     {
-        $this->multipleSelect = ['multiple'];
-
-        return $this;
+        return $this->attr(['multiple']);
     }
 
     public function setMultipleSize(int $size)
     {
-        $this->multipleSize = ['size' => $size];
-
-        return $this;
+        return $this->attr(['size' => $size]);
     }
 
     public function title(string $label, bool $isSelected = true)
@@ -76,10 +60,7 @@ class Select extends \BaseClass
     {
         $attrs = array_merge(
             ['class' => $this->defaultClass . $this->additionalClass],
-            $this->ariaLabel,
-            $this->disabled,
-            $this->multipleSelect,
-            $this->multipleSize
+            $this->attributes
         );
 
         $select = st()->elem('select', $attrs);
