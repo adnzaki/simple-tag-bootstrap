@@ -13,7 +13,9 @@ class Accordion extends \BaseClass
 
     public function open(bool $flush = false)
     {
-        $this->attributes['id'] = 'my-accordion';
+        if(! array_key_exists('id', $this->attributes)) {
+            $this->attributes['id'] = 'my-accordion';
+        }
 
         $flush
             ? $accordionType = 'accordion accordion-flush'

@@ -25,12 +25,12 @@
         require_once 'wrapper.php';
 
         // Just uncomment one of codes below to see it on the browser
-        // require_once 'components/accordion/accordion-sample.php';
+        require_once 'components/accordion/accordion-sample.php';
         // require_once 'components/button/button-sample.php';
         // require_once 'components/icons/icons-sample.php';
         // require_once 'components/alert/alert-sample.php';
         // require_once 'components/forms/select/select-sample.php';
-        require_once 'components/forms/form-control/form-control-sample.php';
+        // require_once 'components/forms/form-control/form-control-sample.php';
         ?>
         </div>
     </div>
