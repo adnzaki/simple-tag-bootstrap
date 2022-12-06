@@ -14,9 +14,15 @@ they do not use any template engine. But Wordpress' way has some lacks for long-
 code base and hard to maintain. This is why SimpleTag created, you can still write high performance
 views with readable and clean PHP codes!
 
+## New "in()" method!
+In real case, writing `content()` repeteadly takes even more time compared to writing HTML. 
+So, we provide a more recommended `in()` method as a replacement for `content()`. We keep `content()`
+in its place for compatibility to your old codes, but we strongly recommend use `in()` method to ease you
+when writing HTML with SimpleTag.
+
 ## How-to
 Using SimpleTag is very easy if you have good undestanding with HTML. It uses array
-to create structured HTML element. The magic `content()` method simplifies the way you
+to create structured HTML element. The magic `in()` method simplifies the way you
 write inner HTML. Here is a basic example of SimpleTag:
 ```
 require 'SimpleTag.php';
@@ -41,12 +47,12 @@ $content = [
 $button = ['button' => ['type' => 'button', 'class' => 'btn', '@click' => 'greetings']];
 
 $tag->elem($elems)
-    ->content('Hello world!', $content)
-    ->content('Above text written with fully PHP!', 'h2', [
+    ->in('Hello world!', $content)
+    ->in('Above text written with fully PHP!', 'h2', [
         'h2' => ['font-style' => 'italic']
     ])
-    ->content('Click me!', $button)
-    ->content('{{ note }}', 'h3')
+    ->in('Click me!', $button)
+    ->in('{{ note }}', 'h3')
     ->render();
 ```
 Above codes will produce:
@@ -63,7 +69,7 @@ Above codes will produce:
 </div>
 ```
 ## Render method
-`render()` method has one parameter called `$raw` with boolean type. Set it to true will give return value as a result. Otherwise, using `render()` method with an empty argument will automatically print HTML result to the browser using PHP `echo`. These options will allow users to choose whether they want to directly print the result to the browser or pass the result into variable or another action.
+`render()` method takes one parameter called `$raw` with boolean type. Set it to true will give return value as a result. Otherwise, using `render()` method with an empty argument will automatically print HTML result to the browser using PHP `echo`. These options will allow users to choose whether they want to directly print the result to the browser or pass the result into variable or another action.
 
 ## Using multiple same elements
 Since SimpleTag uses array to create elements, so we cannot pass the same element tag in `elem()` method, for example: 
@@ -83,7 +89,7 @@ $elems = [
 In this case, you have to add "-" character before your unique ID. You can add anything after "-" character, but we recommend using incremental numbers to make them easy to read. SimpleTag will automatically render those same elements with the correct element tag.
 
 ## Text only content
-There will be a case where you only want to put some texts into `content()`. To handle this, you can pass `null` to the second argument of `content()`. By doing this, SimpleTag will not create any HTML element to the inner HTML.
+There will be a case where you only want to put some texts into `in()`. To handle this, you can pass `null` to the second argument of `in()`. By doing this, SimpleTag will not create any HTML element to the inner HTML.
 
 ## Vue.js user? You are in the right place!
 SimpleTag is fully compatible to work with Vue.js as you can see in the above example. And of course, SimpleTag can also receive native Javascript event handling. Try it from `index.php` file! 

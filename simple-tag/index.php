@@ -33,12 +33,12 @@
     $button = ['button' => ['type' => 'button', 'class' => 'btn', '@click' => 'greetings']];
 
     $tag->elem($elems)
-        ->content('Hello world!', $content)
-        ->content('Above text written with fully PHP!', 'h2', [
+        ->in('Hello world!', $content)
+        ->in('Above text written with fully PHP!', 'h2', [
             'h2' => ['font-style' => 'italic']
         ])
-        ->content('Click me!', $button)
-        ->content('{{ note }}', 'h3')
+        ->in('Click me!', $button)
+        ->in('{{ note }}', 'h3')
         ->render();
     ?>
     <script src="./js/app.js"></script>

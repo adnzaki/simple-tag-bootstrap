@@ -71,7 +71,22 @@ class SimpleTag
         $this->rawTag = $element[1];
 
         return $this;
-    }    
+    }   
+    
+    /**
+     * A shortcut to $this->content() method
+     * "in" means "inner", a definition to inner HTML element
+     * 
+     * @param string $inner
+     * @param string|array $outer
+     * @param array $style
+     * 
+     * @return SimpleTag
+     */
+    public function in(string $inner, $outer = 'div', array $style = [])
+    {
+        return $this->content($inner, $outer, $style);
+    }
 
     /**
      * Set content of outer HTML
